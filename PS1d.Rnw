@@ -26,15 +26,26 @@ data.key
 
 % In a Sweave document R code is placed in chunks delineated by  <<>>= and @.  Options go between the angled brackets.  Type all of the code needed to get your answer in the chunk below, then add your textual answer after the @.  Note that you can add R output to your text using the command \Sexpr{} .
 
-
 <<label=Answer1>>=
+table(mex$PRDfeel)
+mean(mex$PRDfeel)
+median(mex$PRDfeel)
+temp <- table(as.vector(mex$PRDfeel))
+temp
+range(mex$PRDfeel)
+@ 
+The range of the the variable PRDfeel is between 0 an 10. 0 representing very low opinion and 10 being high opinion. The mean for PRDfeel is 4.3, the median value is 5 and the mode is 5.
 
-@
+
+
 
 
 \item The PRD positions itself to the left of the PRI, while the PAN is an unabashedly right-wing party.  Many scholars of Mexican politics argue, however, that Mexicans engage in a two-step process when thinking about politics, asking themselves first whether they support the PRI, and then, if not, choosing between the PRI's opponents.  This suggests that despite the ideological differences between the two parties, those who feel positively toward the PAN will also feel positively toward the PRD.  Is this hypothesis supported by a simple regression of \texttt{PRDfeel}?  How do you know?  Describe the estimated effect of feelings toward the PAN on feelings toward the PRD.  \\
 
 <<label=Answer2>>=
+
+model1 <- lm (mex$PRDfeel ~ mex$PANfeel)
+summary (model1)
 
 @
 
